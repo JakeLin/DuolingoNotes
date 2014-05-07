@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+
+  "name": "Duolingo Notes",
+  "description": "Duolingo Notes can help you save notes during learning.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "https://*.duolingo.com/",
+    "http://*.duolingo.com/",
+    "activeTab",
+    "storage",
+    "notifications",
+    "clipboardWrite",
+    "contextMenus"
+  ],
+  "background": {
+    "scripts": ["js/jquery-2.1.0.min.js", "js/app.js"]
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [
+    "images/icon.png"
+  ]
+}
