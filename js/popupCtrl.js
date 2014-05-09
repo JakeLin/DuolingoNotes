@@ -11,14 +11,14 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   
   // Methods
   $scope.showSpeakButton = function () {
-	return true;
-    /*
-    if ('speechSynthesis' in window) {
-      return true;
-    } else {
-      return false;
-    }
-	*/
+	if (typeof popup.showSpeakButton === 'undefined') {
+	  if ('speechSynthesis' in window) {
+      	popup.showSpeakButton = true;
+	  } else {
+		popup.showSpeakButton = false;
+	  }
+	}
+	return popup.showSpeakButton;
   };
   
   $scope.clickCopy = function (text) {
@@ -40,13 +40,13 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
     // Set the text.
 	msg.text = text;
     
-    var language = detectLanguage(text);
-    // Find the voice and set the utterance instance's voice attribute.
-	if (language == 'English') {
-		msg.voice = 'Google US English';
-	}
-    // Queue this utterance.
-	window.speechSynthesis.speak(msg);
+    guessLanguage.detect(text, function(language) {
+      console.log('Detected language of provided text is [' + language + ']');
+	  // Find the voice and set the utterance instance's voice attribute.
+	  msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == popup.LANGUAGE_MAP[language]; })[0];	  msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == popup.LANGUAGE_MAP[language]; })[0];
+	  // Queue this utterance.
+	  window.speechSynthesis.speak(msg);
+  	});
   };
   
   $scope.clickDelete = function (id) {
@@ -66,7 +66,19 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   };
 
   // Private stuff
-  var popup = {};
+  var popup = {}; 
+  popup.LANGUAGE_MAP = {
+    'en' : 'Google US English',
+    'es' : 'Google Español',
+    'fr' : 'Google Français',
+    'ja' : 'Google 日本人',
+    'ko' : 'Google 한국의',
+    'zh' : 'Google 中国的',
+    'zh_TW' : 'Google 中国的',
+	'it' : 'Google Italiano',
+	'de' : 'Google Deutsch'
+  };
+
   popup.loadNotes = function () {
     chrome.storage.sync.get('notes', function (result){
       
