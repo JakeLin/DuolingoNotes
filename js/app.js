@@ -3,13 +3,9 @@
  */
  
 function addToNotes(info, tab) {
-  // console.log("item " + info.menuItemId + " was clicked");
-  // console.log("info: " + JSON.stringify(info));
-  // console.log("tab: " + JSON.stringify(tab));
-
   chrome.tabs.executeScript(null, { file: "js/jquery-2.1.0.min.js" }, function() {
     chrome.tabs.executeScript(null, { file: "js/contextScript.addToNotes.js" }, function (result) {
-      console.log(result);
+      // console.log(result);
     });
    });
 }

@@ -3,7 +3,7 @@
 
   "name": "Duolingo Notes",
   "description": "Duolingo Notes can help you save notes during learning.",
-  "version": "1.0",
+  "version": "1.2",
 
   "browser_action": {
     "default_icon": "images/icon.png",

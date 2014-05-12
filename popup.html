@@ -14,15 +14,23 @@
         <div class="panel-heading"><h4><b>Duolingo Notes</b> - Help you learn Duolingo faster and better</h4></div>
         <input id="search" class="form-control" placeholder="Search notes" ng-model="query" >
         <table class="table table-striped table-bordered table-hover notesTable">
-            <tr data-ng-repeat="note in notes | filter:query">
-              <td><button class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note['v0'])"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-click="clickSpeak(note['v0'])"><i class="fa fa-volume-up"></i></button>{{ note['v0'] }}</td>
-              <td><button class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note['v1'])"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-click="clickSpeak(note['v1'])"><i class="fa fa-volume-up"></i></button>{{ note['v1'] }} </td>
-              <td><input class="form-control" data-ng-model="note['c']" data-ng-keyup="changeComment(note['id'], note['c'])"></td>
-              <td><button class="btn round-btn btn-danger" data-ng-click="clickDelete(note['id'])"><i class="fa fa-trash-o"></i></button></td>
-            </tr>
+          <tr>
+            <th>Question</th>
+            <th>Duolingo's answer</th>
+            <th>Your answer</th>
+            <th>Comment</th>
+            <th>Actions</th>
+          </tr>
+          <tr data-ng-repeat="note in notes | filter:query">
+            <td><button class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note['q'])"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-show="showSpeakButton" data-ng-click="clickSpeak(note['q'])"><i class="fa fa-volume-up"></i></button>{{ note['q'] }}</td>
+            <td><button class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note['da'])"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-show="showSpeakButton" data-ng-click="clickSpeak(note['da'])"><i class="fa fa-volume-up"></i></button>{{ note['da'] }} </td>
+            <td data-ng-style="{color:note.textColor}"><button class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note['ua'])"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-show="showSpeakButton" data-ng-click="clickSpeak(note['ua'])"><i class="fa fa-volume-up"></i></button>{{ note['ua'] }} </td>
+            <td><input class="form-control" data-ng-model="note['c']" data-ng-keyup="changeComment(note['id'], note['c'])"></td>
+            <td><button class="btn round-btn btn-danger"><i data-ng-click="clickDelete(note['id'])" class="fa fa-trash-o"></i></button></td>
+          </tr>
         </table>
         <div class="panel-body">
-          <div class="bs-callout bs-callout-info" >Right click and select '<b>Add to Duolingo Notes</b>' menu to add note after clicking 'Check' button on Duolingo website. Click on <button class="btn round-btn btn-info copy"><i class="fa fa-files-o"></i></button> to copy the text and click on <button class="btn round-btn btn-info"><i class="fa fa-volume-up"></i></button> to speak the text. Click on <button class="btn round-btn btn-danger"><i class="fa fa-trash-o"></i></button> to delete the note.</div>
+          <div class="bs-callout bs-callout-info">Version {{versionNumber()}}. Right click and select '<b>Add to Duolingo Notes</b>' menu to add note after clicking 'Check' button on Duolingo website. Click on <button class="btn round-btn btn-info copy"><i class="fa fa-files-o"></i></button> to copy the text and click on <button class="btn round-btn btn-info"><i class="fa fa-volume-up"></i></button> to speak the text. Click on <button class="btn round-btn btn-danger"><i class="fa fa-trash-o"></i></button> to delete the note.</div>
         </div>
       </div>
     <script src="js/angular.min.js"></script>

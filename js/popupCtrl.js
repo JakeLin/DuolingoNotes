@@ -18,7 +18,13 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
 		popup.showSpeakButton = false;
 	  }
 	}
+	console.log(popup.showSpeakButton);
 	return popup.showSpeakButton;
+  };
+  
+  $scope.versionNumber = function () {
+    var manifest = chrome.runtime.getManifest();
+	return manifest.version;
   };
   
   $scope.clickCopy = function (text) {
@@ -85,13 +91,23 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
       // Flaten the object to an array for bidding.
       var notes = [];
       for(var guid in result['notes']) {
-        notes.push(result['notes'][guid]);
+		var note = result['notes'][guid];
+		
+		// set the diplay color for the user answer
+		if(note.r === true) {
+	      note.textColor = 'blue';
+		}
+		else if (note.r === false) {
+		  note.textColor = 'red';
+		}
+        notes.push(note);
       }
       
       // Sort by created datetime descendingly. 
       $scope.notes = _.sortBy(notes, function(note){
         return -(new Date(note.d));
       });
+	  
       $scope.$apply();
     });
   };
