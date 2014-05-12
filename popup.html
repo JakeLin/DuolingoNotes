@@ -19,7 +19,7 @@
             <th>Duolingo's answer</th>
             <th>Your answer</th>
             <th>Comment</th>
-            <th>Actions</th>
+            <th></th>
           </tr>
           <tr data-ng-repeat="note in notes | filter:query">
             <td><button class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note['q'])"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-show="showSpeakButton" data-ng-click="clickSpeak(note['q'])"><i class="fa fa-volume-up"></i></button>{{ note['q'] }}</td>
@@ -38,6 +38,6 @@
     <script src="js/_languageData.js"></script>
     <script src="js/guessLanguage.js"></script>
     <script src="js/popupCtrl.js"></script>
-    
+
   </body>
 </html>

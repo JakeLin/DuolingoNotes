@@ -10,45 +10,64 @@ function guid() {
   return _p8() + _p8(true) + _p8(true) + _p8();
 }
 
-if($('#app .listen')[0] !== undefined){
+var type = undefined, question = undefined, userAnswer = undefined, duolingoAnswer = undefined, right = undefined;
+
+if($('#app.listen')[0] !== undefined){
   // Type what you hear
-  var type = 'listen'; 
-  var question = '&#x1f50a;';
-  var userAnswer = $('#graded-word-input').text();
-  var duolingoAnswer = $('#grade .lighter').text();
-  var right = ($('#grade .icon-wrong-big')[0] === undefined);
+  type = 'listen';
+  question = '♪';
+  userAnswer = $('#graded-word-input').text();
 }
-else if ($('#app .translate')[0] !== undefined){
+else if ($('#app.translate')[0] !== undefined){
   // Text translation
-  var type = 'translate'; 
-  var question = $('#session-element-container .text-to-translate .token').text();
-  var userAnswer = $('#graded-text-input').text();
-  var duolingoAnswer = $('#grade .lighter').text();
-  var right = ($('#grade .icon-wrong-big')[0] === undefined);
+  type = 'translate';
+  question = $('#session-element-container .text-to-translate .token').text();
+  userAnswer = $('#graded-text-input').text();
 }
-else if ($('#app .name')[0] !== undefined){
+else if ($('#app.name')[0] !== undefined){
   // Type what you see (pictures)
-  var type = 'name'; 
+  type = 'name';
+  question = [];
+  $('.list-tilted-images li').each(function( index ) {
+    var bg = $(this).css('background-image');
+    bg = bg.replace('url(','').replace(')','');
+    question.push('<img src="' + bg + '" />');
+    // console.log( bg );
+  });
+
+  userAnswer = $('#graded-word-input').text();
 }
-else if ($('#app .judge')[0] !== undefined){
+else if ($('#app.judge')[0] !== undefined){
   // Multiple choice with text
-  var type = 'judge'; 
+  type = 'judge';
+  question = $('.judge-row .col-left').text();
+  userAnswer = $('.judge-row .col-right .white-label.active').text();
 }
-else if ($('#app .select')[0] !== undefined){
+else if ($('#app.select')[0] !== undefined){
   // Multiple choice with text and pictures
-  var type = 'select'; 
+  type = 'select';
 }
-else if ($('#app .reverse_speak')[0] !== undefined){
+else if ($('#app.reverse_speak')[0] !== undefined){
   // Say something after translating it to the language you're learning
-  var type = 'reverse_speak'; 
+  type = 'reverse_speak';
+  question = $('#original-text').text();
+  duolingoAnswer = userAnswer = '♪';
 }
-else if ($('#app .speak')[0] !== undefined){
+else if ($('#app.speak')[0] !== undefined){
   // Read something in the language you're learning
-  var type = 'speak'; 
+  type = 'speak';
+  question = $('#original-text').text();
+  duolingoAnswer = userAnswer = '♪';
 }
-else if ($('#app .form')[0] !== undefined){
+else if ($('#app.form')[0] !== undefined){
   // Fill in the blank using a drop down
-  var type = 'form'; 
+  type = 'form';
+}
+
+right = ($('#grade .icon-wrong-big')[0] === undefined);
+duolingoAnswer = $('#grade .lighter').text();
+if(right === true && typeof duolingoAnswer){
+  duolingoAnswer = userAnswer;
 }
 
 console.log("type: " + type + ", question: " + question + ", userAnswer:" + userAnswer + ", duolingoAnswer:" + duolingoAnswer + ", right:" + right);
@@ -57,7 +76,7 @@ if (question && userAnswer && duolingoAnswer) {
     var notes = result['notes'] || {};
     var id = guid();
     notes[id] = {id: id, d:Date.now(), t: type, q:question, ua:userAnswer, da:duolingoAnswer, r: right, c: ''};
-    
+    console.log(notes[id]);
     chrome.storage.sync.set({'notes': notes}, function() {});
   });
 }
