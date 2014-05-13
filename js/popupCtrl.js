@@ -9,8 +9,9 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   // Binding variables
   $scope.notes = [];
   
-  // Methods
-  $scope.showSpeakButton = function () {
+  /** Methods **/
+  // Check whether display 'Speak' button or not
+  $scope.showSpeakButton = function (text) {
 	if (typeof popup.showSpeakButton === 'undefined') {
 	  if ('speechSynthesis' in window) {
       	popup.showSpeakButton = true;
@@ -18,8 +19,19 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
 		popup.showSpeakButton = false;
 	  }
 	}
-	console.log(popup.showSpeakButton);
+	// console.log(popup.showSpeakButton);
+	// Check the text, if equals to '♪' then hide the button
+	if(typeof text !== 'undefined' && text === '♪') {
+	  return false;
+	}
+	
 	return popup.showSpeakButton;
+  };
+  
+  // Check whether display the button.
+  $scope.showButton = function (text) {
+	// text is not null, undefined or empty or '♪'
+	return (text && text !== '♪');
   };
   
   $scope.versionNumber = function () {

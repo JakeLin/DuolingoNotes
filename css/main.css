@@ -61,3 +61,9 @@ body {
 .round-btn {
   border-radius:100%;
 }
+
+.word_image {
+  width: 60px;
+  height: 60px;
+  margin: 0 5px 5px;
+}

@@ -31,7 +31,7 @@ else if ($('#app.name')[0] !== undefined){
   $('.list-tilted-images li').each(function( index ) {
     var bg = $(this).css('background-image');
     bg = bg.replace('url(','').replace(')','');
-    question.push('<img src="' + bg + '" />');
+    question.push(bg);
     // console.log( bg );
   });
 
