@@ -11,3 +11,13 @@ User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolin
 
 ### License
 The app is under MIT License. The owl logo is owned by Duolingo. And the third party libraries are owned by original vendors.
+
+### Release Notes
+* V1.4 
+Added tooltip for personal comments.
+
+* V1.3
+Added personal comments box.
+
+* V1.2
+Added speech button.

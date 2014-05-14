@@ -28,7 +28,7 @@
             </td>
             <td><button data-ng-show="showButton(note.da)" class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note.da)"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-show="showSpeakButton(note.da)" data-ng-click="clickSpeak(note.da)"><i class="fa fa-volume-up"></i></button>{{ note.da }} </td>
             <td data-ng-style="{color:note.textColor}">{{ note.ua }} </td>
-            <td><input class="form-control" data-ng-model="note.c" data-ng-keyup="changeComment(note.id, note.c)"></td>
+            <td><input class="form-control" data-ng-model="note.c" title="{{note.c}}" data-ng-keyup="changeComment(note.id, note.c)"></td>
             <td><button class="btn round-btn btn-danger"><i data-ng-click="clickDelete(note.id)" class="fa fa-trash-o"></i></button></td>
           </tr>
         </table>
