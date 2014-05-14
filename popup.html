@@ -18,6 +18,7 @@
             <th>Question</th>
             <th>Duolingo's answer</th>
             <th>Your answer</th>
+            <th>Comments</th>
             <th></th>
           </tr>
           <tr data-ng-repeat="note in notes | filter:query">
@@ -27,11 +28,12 @@
             </td>
             <td><button data-ng-show="showButton(note.da)" class="btn round-btn btn-info btn-margin" data-ng-click="clickCopy(note.da)"><i class="fa fa-files-o"></i></button><button class="btn round-btn btn-info btn-margin" data-ng-show="showSpeakButton(note.da)" data-ng-click="clickSpeak(note.da)"><i class="fa fa-volume-up"></i></button>{{ note.da }} </td>
             <td data-ng-style="{color:note.textColor}">{{ note.ua }} </td>
+            <td><input class="form-control" data-ng-model="note.c" data-ng-keyup="changeComment(note.id, note.c)"></td>
             <td><button class="btn round-btn btn-danger"><i data-ng-click="clickDelete(note.id)" class="fa fa-trash-o"></i></button></td>
           </tr>
         </table>
         <div class="panel-body">
-          <div class="bs-callout bs-callout-info">Version {{versionNumber()}}. Right click and select '<b>Add to Duolingo Notes</b>' menu to add note after clicking 'Check' button on Duolingo website. Click on <button class="btn round-btn btn-info copy"><i class="fa fa-files-o"></i></button> to copy the text and click on <button class="btn round-btn btn-info"><i class="fa fa-volume-up"></i></button> to speak the text. Click on <button class="btn round-btn btn-danger"><i class="fa fa-trash-o"></i></button> to delete the note.</div>
+          <div class="bs-callout bs-callout-info">If there is the first time to use the app. Please check out the <a href="https://www.duolingo.com/comment/2976444" target="_blank">User Guide on Duolingo</a>. Version: {{versionNumber()}}</div>
         </div>
       </div>
     <script src="js/angular.min.js"></script>
