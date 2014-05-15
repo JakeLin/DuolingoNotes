@@ -13,7 +13,7 @@ User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolin
 The app is under MIT License. The duolingo trademark and the owl logo are owned by Duolingo. And the third party libraries are owned by original vendors.
 
 ### Release Notes
-* 1.5 
+* V1.5 
 Added Support to Practice Lesson(practicing/strengthening a lesson). The user can add notes during Practice Lesson. Thanks to [jan williams](https://www.duolingo.com/willijanb) for reporting that.
 
 * V1.4 
