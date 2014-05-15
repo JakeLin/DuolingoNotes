@@ -10,7 +10,7 @@ function addToNotes(info, tab) {
    });
 }
 
-var showForPages = ["https://www.duolingo.com/skill/*", "http://www.duolingo.com/skill/*"];
+var showForPages = ["https://www.duolingo.com/skill/*", "http://www.duolingo.com/skill/*","https://www.duolingo.com/practice/*", "http://www.duolingo.com/practice/*"];
 var contexts = ["page","selection","link","editable","image","video","audio"];
                 
 chrome.contextMenus.create({"title": "Add to Duolingo Notes", 
