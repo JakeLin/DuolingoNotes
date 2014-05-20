@@ -17,3 +17,16 @@ chrome.contextMenus.create({"title": "Add to Duolingo Notes",
                             "documentUrlPatterns":showForPages,
                             "contexts":contexts,
                             "onclick": addToNotes});
+                            
+// Migrate all data from chrome.storage.sync to chrome.storage.local due to storage limit problem.
+// Can be removed in the future.
+console.log("Migration starts"); // TODO: will be removed
+chrome.storage.sync.get('notes', function (result){
+  var notes = result['notes'];
+  console.log("notes");
+  console.log(notes);
+  if (notes) {
+    chrome.storage.local.set({'notes': notes}, function() {});
+    chrome.storage.sync.set({'notes': null}, function() {});
+  }
+});

@@ -72,11 +72,11 @@ if(right === true && typeof duolingoAnswer){
 
 console.log("type: " + type + ", question: " + question + ", userAnswer:" + userAnswer + ", duolingoAnswer:" + duolingoAnswer + ", right:" + right);
 if (question && userAnswer && duolingoAnswer) {
-  chrome.storage.sync.get('notes', function (result){
+  chrome.storage.local.get('notes', function (result){
     var notes = result['notes'] || {};
     var id = guid();
     notes[id] = {id: id, d:Date.now(), t: type, q:question, ua:userAnswer, da:duolingoAnswer, r: right, c: ''};
     console.log(notes[id]);
-    chrome.storage.sync.set({'notes': notes}, function() {});
+    chrome.storage.local.set({'notes': notes}, function() {});
   });
 }

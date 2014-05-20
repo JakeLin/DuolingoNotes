@@ -13,6 +13,9 @@ User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolin
 The app is under MIT License. The duolingo trademark and the owl logo are owned by Duolingo. And the third party libraries are owned by original vendors.
 
 ### Release Notes
+* V1.6 
+Use chrome.storage.local to replace chrome.storage.sync due to the date limit of chrome.storage.sync (https://developer.chrome.com/extensions/storage#type-StorageArea). Thanks to [northernguy](https://www.duolingo.com/northernguy) for reporting that.
+
 * V1.5 
 Added Support to Practice Lesson(practicing/strengthening a lesson). The user can add notes during Practice Lesson. Thanks to [jan williams](https://www.duolingo.com/willijanb) for reporting that.
 

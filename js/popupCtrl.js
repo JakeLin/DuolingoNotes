@@ -68,18 +68,18 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   };
   
   $scope.clickDelete = function (id) {
-    chrome.storage.sync.get('notes', function (result){
+    chrome.storage.local.get('notes', function (result){
       var notes = result['notes'];
       delete notes[id];
-      chrome.storage.sync.set({'notes': notes}, function() { popup.loadNotes();});
+      chrome.storage.local.set({'notes': notes}, function() { popup.loadNotes();});
     });
   };
 
   $scope.changeComment = function (id, comment) {
-    chrome.storage.sync.get('notes', function (result){
+    chrome.storage.local.get('notes', function (result){
       var notes = result['notes'];
       notes[id]['c'] = comment;
-      chrome.storage.sync.set({'notes': notes}, function() { });
+      chrome.storage.local.set({'notes': notes}, function() { });
     });
   };
 
@@ -98,7 +98,7 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   };
 
   popup.loadNotes = function () {
-    chrome.storage.sync.get('notes', function (result){
+    chrome.storage.local.get('notes', function (result){
       
       // Flaten the object to an array for bidding.
       var notes = [];
