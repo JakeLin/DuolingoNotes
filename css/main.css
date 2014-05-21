@@ -46,7 +46,7 @@
 }
 
 body {
-  min-width: 800px;
+  min-width: 780px;
   overflow-x: hidden;
 }
 
@@ -66,4 +66,13 @@ body {
   width: 60px;
   height: 60px;
   margin: 0 5px 5px;
+}
+
+img:hover {
+  cursor: pointer;
+  transform:matrix(3, 0, 0, 3, 60, 0);
+  -ms-transform:matrix(3, 0, 0, 3, 60, 0); /* IE 9 */
+  -moz-transform:matrix(3, 0, 0, 3, 60, 0); /* Firefox */
+  -webkit-transform:matrix(3, 0, 0, 3, 60, 0); /* Safari and Chrome */
+  -o-transform:matrix(3, 0, 0, 3, 60, 0); /* Opera */
 }

@@ -7,12 +7,15 @@ This Extension is free on [Google Web Store | Duolingo Notes](https://chrome.goo
 User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolingo faster and better](https://www.duolingo.com/comment/2976444).
 
 ### Design Considerations
-* I use chrome.storage (chrome.storage.sync) instead of IndexedDB because I want to sync the notes across different Google Chrome browsers easily.
+* I use chrome.storage (chrome.storage.sync) instead of IndexedDB because I want to sync the notes across different Google Chrome browsers easily. Due to storage limit, I have changed to use chrome.storage.local to replace chrome.storage.sync.
 
 ### License
 The app is under MIT License. The duolingo trademark and the owl logo are owned by Duolingo. And the third party libraries are owned by original vendors.
 
 ### Release Notes
+* V1.7 
+Improve User Experience, show bigger image when mouse hover over, add tooltip for buttons, resize the popup and display better for Windows users.
+
 * V1.6
 Use chrome.storage.local to replace chrome.storage.sync due to the storage limit of chrome.storage.sync (https://developer.chrome.com/extensions/storage#type-StorageArea). Thanks to [northernguy](https://www.duolingo.com/northernguy) for reporting that.
 
