@@ -13,6 +13,9 @@ User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolin
 The app is under MIT License. The duolingo trademark and the owl logo are owned by Duolingo. And the third party libraries are owned by original vendors.
 
 ### Release Notes
+* V1.8 
+Support image select question.
+
 * V1.7 
 Improve User Experience, show bigger image when mouse hover over, add tooltip for buttons, resize the popup and display better for Windows users.
 

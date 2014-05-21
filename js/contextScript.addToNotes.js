@@ -10,7 +10,7 @@ function guid() {
   return _p8() + _p8(true) + _p8(true) + _p8();
 }
 
-var type = undefined, question = undefined, userAnswer = undefined, duolingoAnswer = undefined, right = undefined;
+var type = undefined, question = undefined, userAnswer = undefined, duolingoAnswer = undefined, correct = undefined;
 
 if($('#app.listen')[0] !== undefined){
   // Type what you hear
@@ -46,6 +46,12 @@ else if ($('#app.judge')[0] !== undefined){
 else if ($('#app.select')[0] !== undefined){
   // Multiple choice with text and pictures
   type = 'select';
+  question = $('.challenge-select .player').text();
+  userAnswer = $('.challenge-select .select-images li.selected .select-images-frame').css('background-image');
+  userAnswer = userAnswer.replace('url(','').replace(')','');
+  
+  duolingoAnswer = $('.challenge-select .select-images li.correct .select-images-frame').css('background-image');
+  duolingoAnswer = duolingoAnswer.replace('url(','').replace(')','');
 }
 else if ($('#app.reverse_speak')[0] !== undefined){
   // Say something after translating it to the language you're learning
@@ -64,18 +70,21 @@ else if ($('#app.form')[0] !== undefined){
   type = 'form';
 }
 
-right = ($('#grade .icon-wrong-big')[0] === undefined);
-duolingoAnswer = $('#grade .lighter').text();
-if(right === true && typeof duolingoAnswer){
+correct = ($('#grade .icon-wrong-big')[0] === undefined);
+if(!duolingoAnswer) {
+  duolingoAnswer = $('#grade .lighter').text();
+}
+
+if(correct === true && !duolingoAnswer){
   duolingoAnswer = userAnswer;
 }
 
-console.log("type: " + type + ", question: " + question + ", userAnswer:" + userAnswer + ", duolingoAnswer:" + duolingoAnswer + ", right:" + right);
+console.log("type: " + type + ", question: " + question + ", userAnswer:" + userAnswer + ", duolingoAnswer:" + duolingoAnswer + ", correct:" + correct);
 if (question && userAnswer && duolingoAnswer) {
   chrome.storage.local.get('notes', function (result){
     var notes = result['notes'] || {};
     var id = guid();
-    notes[id] = {id: id, d:Date.now(), t: type, q:question, ua:userAnswer, da:duolingoAnswer, r: right, c: ''};
+    notes[id] = {id: id, d:Date.now(), t: type, q:question, ua:userAnswer, da:duolingoAnswer, r: correct, c: ''};
     console.log(notes[id]);
     chrome.storage.local.set({'notes': notes}, function() {});
   });

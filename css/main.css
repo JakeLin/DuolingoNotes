@@ -68,7 +68,7 @@ body {
   margin: 0 5px 5px;
 }
 
-img:hover {
+.word_image:hover {
   cursor: pointer;
   transform:matrix(3, 0, 0, 3, 60, 0);
   -ms-transform:matrix(3, 0, 0, 3, 60, 0); /* IE 9 */
