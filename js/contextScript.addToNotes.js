@@ -49,7 +49,7 @@ else if ($('#app.select')[0] !== undefined){
   question = $('.challenge-select .player').text();
   userAnswer = $('.challenge-select .select-images li.selected .select-images-frame').css('background-image');
   userAnswer = userAnswer.replace('url(','').replace(')','');
-  
+
   duolingoAnswer = $('.challenge-select .select-images li.correct .select-images-frame').css('background-image');
   duolingoAnswer = duolingoAnswer.replace('url(','').replace(')','');
 }

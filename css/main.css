@@ -1,7 +1,7 @@
 /**
  * Created by Jake Lin on 5/2/2014.
  */
- 
+
 /* Base styles (regardless of theme) */
 .bs-callout {
   margin: 20px 0;
@@ -75,4 +75,12 @@ body {
   -moz-transform:matrix(3, 0, 0, 3, 60, 0); /* Firefox */
   -webkit-transform:matrix(3, 0, 0, 3, 60, 0); /* Safari and Chrome */
   -o-transform:matrix(3, 0, 0, 3, 60, 0); /* Opera */
+}
+
+.action-buttons {
+  margin: 20px 20px 0;
+}
+
+.action-buttons .btn {
+  margin: 0 15px;
 }

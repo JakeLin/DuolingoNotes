@@ -8,7 +8,7 @@ var duolingoApp = angular.module('duolingoApp', []);
 duolingoApp.controller('PopupController', ['$scope', function($scope) {
   // Binding variables
   $scope.notes = [];
-  
+
   /** Methods **/
   // Check whether display 'Speak' button or not
   $scope.showSpeakButton = function (text) {
@@ -24,21 +24,21 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
 	if(typeof text !== 'undefined' && text === '♪') {
 	  return false;
 	}
-	
+
 	return popup.showSpeakButton;
   };
-  
+
   // Check whether display the button.
   $scope.showButton = function (text) {
 	// text is not null, undefined or empty or '♪'
 	return (text && text !== '♪');
   };
-  
+
   $scope.versionNumber = function () {
     var manifest = chrome.runtime.getManifest();
 	return manifest.version;
   };
-  
+
   $scope.clickCopy = function (text) {
     var copyDiv = document.createElement('div');
     copyDiv.contentEditable = true;
@@ -54,10 +54,10 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   $scope.clickSpeak = function (text) {
     // Create a new instance of SpeechSynthesisUtterance.
 	var msg = new SpeechSynthesisUtterance();
-    
+
     // Set the text.
 	msg.text = text;
-    
+
     guessLanguage.detect(text, function(language) {
       console.log('Detected language of provided text is [' + language + ']');
 	  // Find the voice and set the utterance instance's voice attribute.
@@ -66,12 +66,18 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
 	  window.speechSynthesis.speak(msg);
   	});
   };
-  
+
   $scope.clickDelete = function (id) {
     chrome.storage.local.get('notes', function (result){
       var notes = result['notes'];
       delete notes[id];
       chrome.storage.local.set({'notes': notes}, function() { popup.loadNotes();});
+    });
+  };
+
+  $scope.clickDeleteAll = function () {
+    chrome.storage.local.get('notes', function (result){
+      chrome.storage.local.set({'notes': null}, function() { popup.loadNotes();});
     });
   };
 
@@ -84,7 +90,7 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
   };
 
   // Private stuff
-  var popup = {}; 
+  var popup = {};
   popup.LANGUAGE_MAP = {
     'en' : 'Google US English',
     'es' : 'Google Español',
@@ -99,12 +105,12 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
 
   popup.loadNotes = function () {
     chrome.storage.local.get('notes', function (result){
-      
+
       // Flaten the object to an array for bidding.
       var notes = [];
       for(var guid in result['notes']) {
 		var note = result['notes'][guid];
-		
+
 		// set the diplay color for the user answer
 		if(note.r === true) {
 	      note.textColor = 'blue';
@@ -114,12 +120,12 @@ duolingoApp.controller('PopupController', ['$scope', function($scope) {
 		}
         notes.push(note);
       }
-      
-      // Sort by created datetime descendingly. 
+
+      // Sort by created datetime descendingly.
       $scope.notes = _.sortBy(notes, function(note){
         return -(new Date(note.d));
       });
-	  
+
       $scope.$apply();
     });
   };

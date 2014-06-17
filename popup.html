@@ -7,13 +7,12 @@
       <link rel="stylesheet" href="css/font-awesome.min.css">
       <link rel="stylesheet" href="css/angular-csp.css">
       <link rel="stylesheet" href="css/main.css">
-
   </head>
   <body data-ng-controller="PopupController">
       <div class="panel panel-default">
         <div class="panel-heading"><h4><b>Duolingo Notes</b> - Help you learn Duolingo faster and better</h4></div>
         <input id="search" class="form-control" placeholder="Search notes" ng-model="query" >
-        <table class="table table-striped table-bordered table-hover notesTable">
+        <table id="notesTable" class="table table-striped table-bordered table-hover notesTable">
           <tr>
             <th>Question</th>
             <th>Duolingo's answer</th>
@@ -35,9 +34,13 @@
               <div data-ng-switch-default>{{ note.ua }} </div>
             </td>
             <td><input class="form-control" data-ng-model="note.c" title="{{note.c}}" data-ng-keyup="changeComment(note.id, note.c)"></td>
-            <td><button title="Delete" class="btn round-btn btn-danger"><i data-ng-click="clickDelete(note.id)" class="fa fa-trash-o"></i></button></td>
+            <td><button title="Delete" data-ng-click="clickDelete(note.id)" class="btn round-btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
           </tr>
         </table>
+        <div class="action-buttons">
+          <button title="Export to CSV" id="exportToCsv" class="btn btn-primary"><i class="fa fa-share-square"></i> Export to CSV</button>
+          <button title="Delete all notes" data-ng-click="clickDeleteAll()" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete all notes, it is unrecoverable</button>
+        </div>
         <div class="panel-body">
           <div class="bs-callout bs-callout-info">If there is the first time to use the app. Please check out the <a href="https://www.duolingo.com/comment/2976444" target="_blank">User Guide on Duolingo</a>. Version: {{versionNumber()}}</div>
         </div>
@@ -46,7 +49,9 @@
     <script src="js/underscore-min.js"></script>
     <script src="js/_languageData.js"></script>
     <script src="js/guessLanguage.js"></script>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/html2CSV.js"></script>
+    <script src="js/jqueryFunctions.js"></script>
     <script src="js/popupCtrl.js"></script>
-
   </body>
 </html>
