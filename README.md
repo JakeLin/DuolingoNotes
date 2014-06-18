@@ -14,7 +14,7 @@ The app is under MIT License. The duolingo trademark and the owl logo are owned 
 
 ### Release Notes
 * V1.9
-Add delete button. Add export to CSV feature. Thanks to [northernguy](https://www.duolingo.com/northernguy) for suggesting these features.
+Add delete all notes button. Add export notes to CSV feature. Thanks to [northernguy](https://www.duolingo.com/northernguy) for suggesting these features.
 
 * V1.8
 Support image select question.
