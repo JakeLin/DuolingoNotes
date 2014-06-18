@@ -12,6 +12,8 @@ function guid() {
 
 var type = undefined, question = undefined, userAnswer = undefined, duolingoAnswer = undefined, correct = undefined;
 
+console.log('add to notes');
+
 if($('#app.listen')[0] !== undefined){
   // Type what you hear
   type = 'listen';

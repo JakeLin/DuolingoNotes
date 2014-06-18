@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Duolingo Notes",
-  "description": "Duolingo Notes can help you save notes during learning.",
-  "version": "1.9",
+  "description": "Help you learn Duolingo faster and better",
+  "version": "2.0",
 
   "browser_action": {
     "default_icon": "images/icon.png",
@@ -21,6 +21,14 @@
   ],
   "background": {
     "scripts": ["js/jquery-2.1.0.min.js", "js/app.js"]
+  },
+  "commands": {
+    "add-to-notes": {
+      "suggested_key": {
+        "default": "Alt+A"
+      },
+      "description": "Add to Duolingo Notes"
+    }
   },
   "icons": {
     "16": "images/icon16.png",

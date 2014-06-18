@@ -16,6 +16,7 @@ User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolin
 * Delete the note.
 * Delete all notes.
 * Export notes to CSV.
+* Use shortcut key (Alt+A) to add note.
 
 ### Design Considerations
 * I use chrome.storage (chrome.storage.sync) instead of IndexedDB because I want to sync the notes across different Google Chrome browsers easily. Due to storage limit, I have changed to use chrome.storage.local to replace chrome.storage.sync.
@@ -24,6 +25,9 @@ User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolin
 The app is under MIT License. The duolingo trademark and the owl logo are owned by Duolingo. And the third party libraries are owned by original vendors.
 
 ### Release Notes
+* V2.0
+Add shortcut key (Alt+A) to add note. Thanks to [northernguy](https://www.duolingo.com/northernguy) for suggesting these features.
+
 * V1.9
 Add delete all notes button. Add export notes to CSV feature. Thanks to [northernguy](https://www.duolingo.com/northernguy) for suggesting these features.
 
