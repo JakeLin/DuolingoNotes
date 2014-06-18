@@ -6,6 +6,17 @@ This Extension is free on [Google Web Store | Duolingo Notes](https://chrome.goo
 
 User Guide is availabe on [Duolingo | Duolingo Notes App - Help you learn Duolingo faster and better](https://www.duolingo.com/comment/2976444).
 
+### Features
+* bookmark the question and answer during learning.
+* Review your bookmarked notes.
+* Copy the note.
+* Speak the note.
+* Add personal comments.
+* Search the note.
+* Delete the note.
+* Delete all notes.
+* Export notes to CSV.
+
 ### Design Considerations
 * I use chrome.storage (chrome.storage.sync) instead of IndexedDB because I want to sync the notes across different Google Chrome browsers easily. Due to storage limit, I have changed to use chrome.storage.local to replace chrome.storage.sync.
 
